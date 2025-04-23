@@ -12,7 +12,7 @@ A professional implementation of the classic Simon Says memory game with modern 
 
 ## How to Play
 
-No installation required! Simply click [here]() to play the game and keep the following instructions in mind:
+No installation required! Simply click [here](https://simon-say-memory-game.netlify.app/) to play the game and keep the following instructions in mind:
 
 1. Press START to begin the game
 2. Watch the sequence of colors and sounds
