@@ -1,0 +1,338 @@
+/* Base Styles */
+:root {
+  --primary-bg: #0f0f1a;
+  --secondary-bg: #1a1a2e;
+  --text-color: #e6e6ff;
+  --accent-color: #6e44ff;
+  --yellow: #ffd166;
+  --red: #ef476f;
+  --purple: #7b2cbf;
+  --green: #06d6a0;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --game-over: #ef476f;
+  --game-active: #06d6a0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(circle at 10% 20%, rgba(110, 68, 255, 0.1) 0%, rgba(0, 0, 0, 0) 90%);
+}
+
+.game-container {
+  max-width: 600px;
+  width: 100%;
+  background-color: var(--secondary-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg, var(--yellow), var(--red), var(--purple), var(--green));
+}
+
+header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--yellow), var(--red), var(--purple), var(--green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  font-weight: 700;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.score-box {
+  background-color: rgba(30, 30, 46, 0.7);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  min-width: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.score-box span {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(230, 230, 255, 0.7);
+  margin-bottom: 0.3rem;
+}
+
+.score-box div {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.game-message {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  min-height: 2.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+/* Game Buttons */
+.btnsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.upperbtn, .lowerbtn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 160px;
+  width: 160px;
+  border-radius: 20%;
+  border: none;
+  margin: 0.8rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.purple {
+  background-color: var(--purple);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+/* Game Effects */
+.gameFlash {
+  animation: gameFlash 0.3s ease-out;
+}
+
+@keyframes gameFlash {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.userFlash {
+  animation: userFlash 0.3s ease-out;
+}
+
+@keyframes userFlash {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { transform: scale(0.95); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.control-btn {
+  background-color: rgba(30, 30, 46, 0.7);
+  color: var(--text-color);
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.control-btn:hover {
+  background-color: rgba(110, 68, 255, 0.2);
+}
+
+.control-btn.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.control-btn i {
+  font-size: 1rem;
+}
+
+/* Power Indicator */
+.power-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.power-light {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 0.3rem;
+  transition: var(--transition);
+}
+
+.power-light.on {
+  background-color: var(--game-active);
+  box-shadow: 0 0 10px var(--game-active);
+}
+
+.power-light.off {
+  background-color: var(--game-over);
+  box-shadow: 0 0 10px var(--game-over);
+}
+
+.power-text {
+  font-size: 0.8rem;
+  color: rgba(230, 230, 255, 0.7);
+  letter-spacing: 1px;
+}
+
+/* Game States */
+.game-over {
+  color: var(--game-over) !important;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.level-up {
+  color: var(--game-active) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 1.5rem;
+  }
+  
+  .btn {
+    height: 140px;
+    width: 140px;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  .game-message {
+    font-size: 1.1rem;
+  }
+  
+  .score-box {
+    padding: 0.6rem 1rem;
+    min-width: 80px;
+  }
+  
+  .score-box div {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  
+  .btn {
+    height: 120px;
+    width: 120px;
+    margin: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .controls {
+    flex-wrap: wrap;
+  }
+  
+  .control-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}

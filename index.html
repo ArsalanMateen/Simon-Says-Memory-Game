@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simon Says memory game">
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Simon Says - Memory Game</title>
+  </head>
+  <body>
+    <div class="game-container">
+      <header>
+        <h1>Simon Says</h1>
+        <div class="score-container">
+          <div class="score-box">
+            <span>Level</span>
+            <div id="currentLevel">0</div>
+          </div>
+          <div class="score-box">
+            <span>High Score</span>
+            <div id="highScore">0</div>
+          </div>
+        </div>
+      </header>
+
+      <div id="gameMessage" class="game-message">Press START to play</div>
+      
+      <div class="btnsContainer">
+        <div class="upperbtn">
+          <button class="btn yellow" id="yellow" aria-label="Yellow button">
+            <span class="btn-sound" data-sound="C4"></span>
+          </button>
+          <button class="btn red" id="red" aria-label="Red button">
+            <span class="btn-sound" data-sound="E4"></span>
+          </button>
+        </div>
+        <div class="lowerbtn">
+          <button class="btn purple" id="purple" aria-label="Purple button">
+            <span class="btn-sound" data-sound="G4"></span>
+          </button>
+          <button class="btn green" id="green" aria-label="Green button">
+            <span class="btn-sound" data-sound="A4"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="control-btn">
+          <i class="fas fa-play"></i> START
+        </button>
+        <button id="strictBtn" class="control-btn">
+          <i class="fas fa-lock"></i> STRICT
+        </button>
+        <button id="soundBtn" class="control-btn active">
+          <i class="fas fa-volume-up"></i> SOUND
+        </button>
+      </div>
+
+      <div class="power-container">
+        <div class="power-light"></div>
+        <div class="power-text">POWER</div>
+      </div>
+    </div>
+
+    <audio id="C4" src="https://assets.codepen.io/21542/horn-c4.mp3"></audio>
+    <audio id="E4" src="https://assets.codepen.io/21542/horn-e4.mp3"></audio>
+    <audio id="G4" src="https://assets.codepen.io/21542/horn-g4.mp3"></audio>
+    <audio id="A4" src="https://assets.codepen.io/21542/horn-a4.mp3"></audio>
+    <audio id="gameOverSound" src="https://assets.codepen.io/21542/wrong-buzzer.mp3"></audio>
+    <audio id="levelUpSound" src="https://assets.codepen.io/21542/level-up.mp3"></audio>
+
+    <script src="app.js"></script>
+  </body>
+</html>
